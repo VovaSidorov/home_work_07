@@ -1,7 +1,8 @@
 var li, a, h1;
 var navigation = document.getElementById("navigation");
 var names = [
-               {"name":"Home","href":"index.html"},
+			   {"name":"Home","href":"index.html"},
+			   {"name":"Login","href":"login.html"},
                {"name":"Catalog","href":"catalog.html"},
                {"name":"Add item","href":"additem.html"},
                {"name":"About us","href":"about_us.html"},
