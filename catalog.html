@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Урок 5</title>
+   <meta charset="utf-8">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/style.css">
+ </head>
+ <body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+   <a class="navbar-brand" href="#">imt</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
+ 
+   <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+     <ul class="navbar-nav" id="navigation"> </ul>
+   </div>
+ </div>
+ </nav>
+
+  <div class="container">
+      <div class="row mt-3">
+      </div>
+      <div class="row colend justify-content-end" id="colProducts"> 
+        </div>
+  </div>
+
+  <div class="container">
+    <div class="row mt-1 justify-content-end">
+    <div  id="searchPhrase"></div>
+  </div>
+      </div>
+
+
+  <div class="container">
+    <div class="row">
+    </div>
+    <div class="row colend1" id="colProducts1"> 
+      </div>
+</div>
+<div class="container">
+  <!-- <div class="div align-text-bottom">
+          <button id="minmax" type="button" class="btn btn-light">Min -> Max</button>
+          <button id="maxmin" type="button" class="btn btn-light">Max -> Min</button>
+  </div> -->
+</div>
+<div class="container">
+  <div class="row my-3">
+    <div class="col">
+      <h1>Catalog</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-inline my-2 col">
+      <input id="s" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button id="search" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sorting goods
+      </button>
+      <div class="dropdown-menu btn-light" aria-labelledby="dropdownMenuButton">
+        <a id="minmax" class="dropdown-item" href="#">Min to Max</a>
+        <a id="maxmin" class="dropdown-item" href="#">Max to Min</a>
+      </div>
+    </div>
+  </div>
+  <div id="catalog" class="row catalog"></div>
+  <nav id="pagination"></nav>
+</div>
+
+<div id="product_more" class="modal" tabindex="-1" role="dialog">
+  <!-- <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12"><img class="w-100" src="images/bg-01.jpg" alt=""></div>
+        <div class="col-12">This is very cool snikers. Nice colorfull and quality</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Buy</button>
+      </div>
+    </div>
+  </div> -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="script.js" async defer></script>
+ </body> 
+</html>
