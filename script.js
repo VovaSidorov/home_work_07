@@ -87,6 +87,12 @@ function createPagination(array_products){
 	Array.from(document.getElementsByClassName("product_more")).map((el)=>{
 		el.addEventListener("click",eventHandle,false);	
 	});
+	Array.from(document.getElementsByClassName("btn btn-secondary closemodal")).map((el)=>{
+		el.addEventListener("click",eventHandleButtonClose,false);	
+	});
+	Array.from(document.getElementsByClassName("close")).map((el)=>{
+		el.addEventListener("click",eventHandleClosingSing,false);	
+	});
 }
 	
 	const eventHandle =	(e)=>{
@@ -96,7 +102,37 @@ function createPagination(array_products){
 		  const modal = document.getElementById("product_more");
 		  modal.style.display = "block";
 		  modal.setAttribute("class","modal fade show");
-		  console.log("Privet");	
+		  console.log("Privet "+e.target);	  
+		}
+
+function closeModalWindow(){
+	e.preventDefault();
+	e.stopPropagation();
+  console.log(e.target);
+  const modal = document.getElementById("product_more");
+  modal.style.display = "";
+  modal.setAttribute("class","modal fade show");
+  console.log("Privet "+e.target);	
+}
+
+		const eventHandleButtonClose =	(e)=>{
+		  e.preventDefault();
+		  e.stopPropagation();
+		  console.log(e.target);
+		  const modal = document.getElementById("product_more");
+		  modal.style.display = "";
+		  modal.setAttribute("class","modal fade show");
+		  console.log("Privet "+e.target);
+		}
+		
+		const eventHandleClosingSing =	(e)=>{
+		  e.preventDefault();
+	      e.stopPropagation();
+          console.log(e.target);
+          const modal = document.getElementById("product_more");
+          modal.style.display = "";
+          modal.setAttribute("class","modal fade show");
+          console.log("Privet "+e.target);
 		}
 
 
@@ -136,30 +172,12 @@ function createCard(product,index){
 
 	return catalogItem;
 }
-// <!-- <div class="modal-dialog" role="document">
-// <div class="modal-content">
-//   <div class="modal-header">
-// 	<h5 class="modal-title">Product</h5>
-// 	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-// 	  <span aria-hidden="true">&times;</span>
-// 	</button>
-//   </div>
-//   <div class="modal-body">
-// 	<div class="col-12"><img class="w-100" src="images/bg-01.jpg" alt=""></div>
-// 	<div class="col-12">This is very cool snikers. Nice colorfull and quality</div>
-//   </div>
-//   <div class="modal-footer">
-// 	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-// 	<button type="button" class="btn btn-primary">Buy</button>
-//   </div>
-// </div>
-// </div> -->
 
-
-function createDescription(products){	
+function createDescription(products,i){	
+   console.log(products.name);
    var h5 = createNewElement("h5",products.name,"modal-title");
    var span = createNewElement("span","&times;",null,[{"name":"aria-hidden","value":"true"}]);
-   var button = attachChilderToParent(createNewElement("button",null,"close",[{"name":"type","value":"button"},{"name":"data-dismiss","value":"modal"},{"name":"aria-label","value":"Close"}]),[span]);
+   var button = attachChilderToParent(createNewElement("button",null,"close",[{"name":"type","value":"button"},{"name":"data-dismiss","value":i},{"name":"aria-label","value":"Close"}]),[span]);
    var headerDescription = attachChilderToParent(createNewElement("div",null,"modal-header"),[h5,button]);
    
    var img = createNewElement("img",null,"w-100",[{"name":"src","value":"images/"+products.image}]);
@@ -167,15 +185,17 @@ function createDescription(products){
    var divDescription = createNewElement("div",products.description,"col=12");
    var midddleDescription = attachChilderToParent(createNewElement("div",null,"modal-body"),[divImage,divDescription]);
 
-   var buttonClose = createNewElement("button","close","btn btn-secondary",[{"name":"type","value":"button"},{"name":"data-dismiss","value":"modal"}]);
+   var buttonClose = createNewElement("button","close","btn btn-secondary closemodal",[{"name":"type","value":"button"},{"name":"data-dismiss","value":"modal"}]);
    var buttonAddToCard = createNewElement("button","Add to Cart","btn btn-primary",[{"name":"type","value":"button"}]);
    var footerDescription = attachChilderToParent(createNewElement("div",null,"modal-footer"),[buttonClose,buttonAddToCard]);
 
    var modalDialog = attachChilderToParent(createNewElement("div",null,"modal-content"),[headerDescription,midddleDescription,footerDescription]);
 
    var modalDescription = attachChilderToParent(createNewElement("div",null,"modal-dialog",[{"name":"role","value":"document"}]),[modalDialog]);
-   console.log(modalDescription);
-   return modalDescription;
+   
+   var modalDescription1 = attachChilderToParent(createNewElement("div",null,"modal",[{"name":"id","value":"product_more"},{"name":"tabindex","value":"-1"},{"name":"role","value":"dialog"}]),[modalDescription]);
+   console.log(modalDescription1);
+   return modalDescription1;
 }
 
 
@@ -202,7 +222,7 @@ function renderProducts(array_products){
 	catalog.innerHTML="";
  for (var i=startFromFirstProducts();isLastProductInPage(i,array_products); i++){
 	catalog.appendChild(createCard(array_products[i],i));
-	// catalog.appendChild(createDescription(array_products[i]));
+	catalog.appendChild(createDescription(array_products[i],i));
 	
  }
  createPagination(products);
