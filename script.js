@@ -52,6 +52,7 @@ let current_page = 0;
 
 let minmax_button = document.getElementById("minmax");
 let maxmin_button = document.getElementById("maxmin");
+let inorder_button = document.getElementById("inorder");
 let pagination = document.getElementById("pagination");
 var paginations_buttons = document.getElementsByClassName("page-link");	
 const search_button = document.getElementById("search");
@@ -95,7 +96,7 @@ function createPagination(array_products){
 		  const modal = document.getElementById("product_more");
 		  modal.style.display = "block";
 		  modal.setAttribute("class","modal fade show");
-		  console.log("Privet");
+		  console.log("Privet");	
 		}
 
 
@@ -161,7 +162,7 @@ function createDescription(products){
    var button = attachChilderToParent(createNewElement("button",null,"close",[{"name":"type","value":"button"},{"name":"data-dismiss","value":"modal"},{"name":"aria-label","value":"Close"}]),[span]);
    var headerDescription = attachChilderToParent(createNewElement("div",null,"modal-header"),[h5,button]);
    
-   var img = createNewElement("img",null,"w-100",[{"name":"src","value":"images/"}]);
+   var img = createNewElement("img",null,"w-100",[{"name":"src","value":"images/"+products.image}]);
    var divImage = attachChilderToParent(createNewElement("div",null,"col-12"),[img]);
    var divDescription = createNewElement("div",products.description,"col=12");
    var midddleDescription = attachChilderToParent(createNewElement("div",null,"modal-body"),[divImage,divDescription]);
@@ -178,7 +179,7 @@ function createDescription(products){
 }
 
 
-console.log(createDescription(products));
+// console.log(createDescription(products));
 
 function attachChilderToParent(html, array_el){
 	array_el.map((el)=>html.appendChild(el));
@@ -201,7 +202,7 @@ function renderProducts(array_products){
 	catalog.innerHTML="";
  for (var i=startFromFirstProducts();isLastProductInPage(i,array_products); i++){
 	catalog.appendChild(createCard(array_products[i],i));
-	// catalog.createDescription(array_products[i]);
+	// catalog.appendChild(createDescription(array_products[i]));
 	
  }
  createPagination(products);
@@ -255,7 +256,7 @@ function sortProductsMaxMin(){
 
 function filterAndRenderProducts(){
 	let search_products = [];
-	let searchPhrase;
+	// let searchPhrase;
 	const reg = new RegExp(s.value);
 	search_products  = products.filter((el)=>reg.test(el.name) || reg.test(el.description));
 	console.log(search_products.length);
@@ -282,10 +283,21 @@ s.addEventListener("keypress",(e)=>{
 minmax_button.addEventListener("click",(e)=>{
 	renderProducts(sortProductsMinMax());
 	createPagination(sortProductsMinMax());
+	var el = document.getElementById("dropdownMenuButton");
+	el.firstChild.data = "Min max";
 });
 maxmin_button.addEventListener("click",(e)=>{
 	renderProducts(sortProductsMaxMin());
 	createPagination(sortProductsMaxMin());
+	var el = document.getElementById("dropdownMenuButton");
+	el.firstChild.data = "Mix min";
+});	
+inorder_button.addEventListener("click",(e)=>{
+	renderProducts(products);
+	createPagination(products);
+	var el = document.getElementById("dropdownMenuButton");	 
+	el.firstChild.data = "In order";
+
 });	
 
 
@@ -294,7 +306,7 @@ colElements.appendChild(createQuantityOfGoods());
 
 renderProducts(products);
 createPagination(products);
-
+// createDescription(products);
 
 
 
